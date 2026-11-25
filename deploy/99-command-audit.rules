@@ -1,0 +1,3 @@
+# Install through auditd's rules.d directory, then reload with augenrules --load.
+-a always,exit -F arch=b64 -S execve -S execveat -k command_audit
+-a always,exit -F arch=b32 -S execve -S execveat -k command_audit

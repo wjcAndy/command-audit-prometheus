@@ -1,0 +1,14 @@
+* text=auto eol=lf
+*.go text eol=lf
+*.py text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.service text eol=lf
+*.rules text eol=lf
+Makefile text eol=lf
+Dockerfile text eol=lf
+go.mod text eol=lf
+pyproject.toml text eol=lf
+SHA256SUMS.txt text eol=lf
+dist/command-audit-* binary
+*.zip binary

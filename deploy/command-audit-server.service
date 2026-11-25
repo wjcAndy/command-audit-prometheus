@@ -1,0 +1,19 @@
+[Unit]
+Description=Command audit aggregation server
+After=network-online.target
+
+[Service]
+Type=simple
+User=command-audit
+Group=command-audit
+EnvironmentFile=-/etc/command-audit/server.env
+ExecStart=/usr/local/bin/command-audit server --web.listen-address=0.0.0.0:9100 --dangerous.commands=collect
+Restart=always
+RestartSec=3
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target

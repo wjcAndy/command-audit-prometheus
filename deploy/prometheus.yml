@@ -1,0 +1,12 @@
+scrape_configs:
+  # Push mode: scrape only the aggregation server.
+  - job_name: command-audit-server
+    static_configs:
+      - targets: ["command-audit-server.example:9100"]
+    # bearer_token_file: /etc/prometheus/command_audit_token
+
+  # Pull mode alternative: scrape agents directly and disable their --server-url.
+  # - job_name: command-audit-agents
+  #   file_sd_configs:
+  #     - files: ["/etc/prometheus/command-audit-targets.json"]
+  #   # bearer_token_file: /etc/prometheus/command_audit_token

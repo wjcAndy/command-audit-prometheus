@@ -1,0 +1,3 @@
+78bd06a7d9acb0714fee3b9d269d19bcc13789843091bb0b3cb8f7240472347a  dist/command-audit-linux-amd64
+fe1b1f2c1fb2afb78335d91722f5da9ed510d6fcdd0eea717a32fd6ee75f8956  dist/command-audit-linux-arm64
+838c669a55a826e17bf0f68e34fdee0fe1ba10a1952cefdf5a4349442ad0da97  dist/command-audit-windows-amd64.exe

@@ -1,0 +1,33 @@
+groups:
+  - name: command-audit
+    rules:
+      - alert: CommandAuditDangerousCommand
+        expr: increase(command_audit_dangerous_events_total[5m]) > 0
+        labels:
+          severity: '{{ $labels.severity }}'
+        annotations:
+          summary: 'Dangerous command on {{ $labels.hostname }}'
+          description: 'User {{ $labels.user }} executed {{ $labels.command }}; rule={{ $labels.rule }}, count={{ $value }} in 5m.'
+
+      - alert: CommandAuditAgentDown
+        expr: command_audit_agent_up == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: 'Command audit agent is not reporting: {{ $labels.hostname }}'
+
+      - alert: CommandAuditEventsDropped
+        expr: increase(command_audit_agent_events_dropped_total[5m]) > 0
+        labels:
+          severity: warning
+        annotations:
+          summary: 'Audit events dropped on {{ $labels.hostname }}'
+          description: '{{ $value }} events were dropped in 5m; inspect queue pressure and connectivity.'
+
+      - alert: CommandAuditParseErrors
+        expr: increase(command_audit_parse_errors_total[5m]) > 0
+        labels:
+          severity: warning
+        annotations:
+          summary: 'Audit parser errors on {{ $labels.hostname }}'

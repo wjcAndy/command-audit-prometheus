@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "command-audit"
+version = "0.2.0"
+description = "Linux execve audit agent and Prometheus aggregation server"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.scripts]
+command-audit = "command_audit.cli:main"
+command-audit-agent = "command_audit.agent:main"
+command-audit-server = "command_audit.server:main"
+
+[tool.setuptools.packages.find]
+include = ["command_audit*"]

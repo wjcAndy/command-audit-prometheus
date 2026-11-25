@@ -1,0 +1,19 @@
+[Unit]
+Description=Kernel command audit agent
+After=auditd.service network-online.target
+Requires=auditd.service
+
+[Service]
+Type=simple
+User=root
+EnvironmentFile=-/etc/command-audit/agent.env
+ExecStart=/usr/local/bin/command-audit --web.listen-address=0.0.0.0:9101 --audit.log-path=/var/log/audit/audit.log --dangerous.commands=collect --collector.args
+Restart=always
+RestartSec=3
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target
